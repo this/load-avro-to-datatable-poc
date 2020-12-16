@@ -9,6 +9,6 @@ pip install -r requirements.txt
 
 ## Running
 ```shell script
-python src/main.py <path/to/an_avro_file>
+python main.py <path/to/an_avro_file>
 ```
 Sample Avro files can be found in the `test` directory.
