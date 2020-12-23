@@ -3,7 +3,6 @@ import sys
 
 import datatable as dt
 import fastavro as avro
-import pandas as pd
 
 
 def import_to_dt(data_path: str):
@@ -11,10 +10,10 @@ def import_to_dt(data_path: str):
         raise ValueError(f"Path '{data_path}' does not point to an Avro file.")
 
     with open(data_path, 'rb') as fo:
-        records = avro.reader(fo)
-        data_frame = pd.DataFrame(records)
-        table = dt.Frame(data_frame)
-        return table
+        reader = avro.reader(fo)
+        records = list(reader)
+    table = dt.Frame(records)
+    return table
 
 
 if __name__ == '__main__':
